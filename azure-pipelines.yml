@@ -16,11 +16,11 @@ steps:
   displayName: 'install databricks cli'
 
 - script: |
-    url=”adb-491463922244483.3.azuredatabricks.net”
+    url=”https://adb-491463922244483.3.azuredatabricks.net”
     token=”dapi6095f2167e0b23370d1ee7827155b842”
-    echo $token > token-file
-    databricks configure --host ”adb-491463922244483.3.azuredatabricks.net” --token-file token-file
-    rm -f token-file
+    echo "[DEFAULT]                                                               
+    host = $url
+    token = $token" > ~/.databricks.cfg
   displayName: 'set environment variables for databricks host and token'
 
 - script: |
