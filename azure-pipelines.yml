@@ -1,0 +1,25 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: pip install databricks-cli
+  displayName: 'install databricks cli'
+
+- script: export DATABRICKS_HOST=”https://adb-491463922244483.3.azuredatabricks.net/”
+          export DATABRICKS_TOKEN=”dapi6095f2167e0b23370d1ee7827155b842”
+  displayName: 'set environment variables for databricks host and token'
+
+- script: wget https://github.com/databricks/terraform-provider-databricks/releases/download/v1.27.0/terraform-provider-databricks_1.27.0_darwin_amd64.zip
+          unzip terraform-provider-databricks_1.27.0_darwin_amd64.zip
+  displayName: 'Get the terraform exporter code'
+
+- script: ./terraform-provider-databricks_v1.27.0 exporter -directory output -skip-interactive
+  displayName: 'run the terraform exporter'
