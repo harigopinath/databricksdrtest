@@ -21,7 +21,10 @@ steps:
   displayName: 'install databricks cli'
 
 - script: |
-    databricks configure --token
+    databricks configure --token <<EOF
+    https://adb-491463922244483.3.azuredatabricks.net
+    dapi6095f2167e0b23370d1ee7827155b842
+    EOF
   displayName: 'configure token'
 
 - script: |
