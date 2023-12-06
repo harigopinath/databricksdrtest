@@ -27,5 +27,5 @@ steps:
 - script: |
     pwd
     ls
-    ./terraform-provider-databricks_1.31.0 exporter -directory output -skip-interactive
+    ./terraform-provider-databricks_v1.31.0.exe exporter -directory output -skip-interactive
   displayName: 'run the terraform exporter'
