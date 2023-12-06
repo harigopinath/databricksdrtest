@@ -21,6 +21,10 @@ steps:
   displayName: 'install databricks cli'
 
 - script: |
+    databricks configure --token
+  displayName: 'configure token'
+
+- script: |
     wget https://github.com/databricks/terraform-provider-databricks/releases/download/v1.31.0/terraform-provider-databricks_1.31.0_linux_amd64.zip
     unzip terraform-provider-databricks_1.31.0_linux_amd64.zip
   displayName: 'Get the terraform exporter code'
