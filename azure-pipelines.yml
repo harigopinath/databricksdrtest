@@ -24,5 +24,7 @@ steps:
     unzip terraform-provider-databricks_1.31.0_windows_amd64.zip
   displayName: 'Get the terraform exporter code'
 
-- script: ./terraform-provider-databricks_1.31.0 exporter -directory output -skip-interactive
+- script: |
+    pwd
+    ./terraform-provider-databricks_1.31.0 exporter -directory output -skip-interactive
   displayName: 'run the terraform exporter'
