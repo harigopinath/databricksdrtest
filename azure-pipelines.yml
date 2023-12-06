@@ -14,7 +14,7 @@ steps:
 - task: configuredatabricks@0
   inputs:
     url: 'https://adb-491463922244483.3.azuredatabricks.net'
-    token: 'dapi6095f2167e0b23370d1ee7827155b842'
+    token: 'dapi44a25ba7d3fe208c0168f6d4ea2bcb40'
 
 - script: |
     pip install databricks-cli
