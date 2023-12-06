@@ -20,12 +20,12 @@ steps:
   displayName: 'set environment variables for databricks host and token'
 
 - script: |
-    wget https://github.com/databricks/terraform-provider-databricks/releases/download/v1.31.0/terraform-provider-databricks_1.31.0_windows_amd64.zip
-    unzip terraform-provider-databricks_1.31.0_windows_amd64.zip
+    wget https://github.com/databricks/terraform-provider-databricks/releases/download/v1.31.0/terraform-provider-databricks_1.31.0_linux_amd64.zip
+    unzip terraform-provider-databricks_1.31.0_linux_amd64.zip
   displayName: 'Get the terraform exporter code'
 
 - script: |
     pwd
     ls
-    ./terraform-provider-databricks_v1.31.0.exe exporter -directory output -skip-interactive
+    ./terraform-provider-databricks_1.31.0 exporter -directory output -skip-interactive
   displayName: 'run the terraform exporter'
