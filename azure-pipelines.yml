@@ -10,6 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+
 - script: pip install databricks-cli
   displayName: 'install databricks cli'
 
@@ -17,8 +18,9 @@ steps:
           export DATABRICKS_TOKEN=”dapi6095f2167e0b23370d1ee7827155b842”
   displayName: 'set environment variables for databricks host and token'
 
-- script: wget https://github.com/databricks/terraform-provider-databricks/releases/download/v1.27.0/terraform-provider-databricks_1.27.0_darwin_amd64.zip
-          unzip ./terraform-provider-databricks_1.27.0_darwin_amd64.zip
+- script: |
+    wget https://github.com/databricks/terraform-provider-databricks/releases/download/v1.27.0/terraform-provider-databricks_1.27.0_darwin_amd64.zip
+    unzip terraform-provider-databricks_1.27.0_darwin_amd64.zip
   displayName: 'Get the terraform exporter code'
 
 - script: ./terraform-provider-databricks_v1.27.0 exporter -directory output -skip-interactive
