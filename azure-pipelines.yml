@@ -41,7 +41,8 @@ steps:
 - script: |
     cd output
     terraform init
-    terraform plan
-    terraform apply
+    terraform apply <<EOF
+    yes
+    EOF
     ./import.sh
   displayName: 'import into secondary workspace'
