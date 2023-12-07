@@ -45,5 +45,6 @@ steps:
     terraform apply <<EOF
     yes
     EOF
+    cd ..
     ls output/
   displayName: 'import into secondary workspace'
