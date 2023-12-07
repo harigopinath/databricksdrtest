@@ -28,7 +28,7 @@ steps:
   displayName: 'Get the terraform exporter code'
 
 - script: |
-    ./terraform-provider-databricks_v1.31.0 exporter -directory output -skip-interactive
+    ./terraform-provider-databricks_v1.31.0 exporter -listing=jobs,compute -directory output -skip-interactive
   displayName: 'run the terraform exporter'
 
 - script: |
