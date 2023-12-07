@@ -11,11 +11,6 @@ pool:
 
 steps:
 
-- task: configuredatabricks@0
-  inputs:
-    url: 'https://adb-491463922244483.3.azuredatabricks.net'
-    token: 'dapi44a25ba7d3fe208c0168f6d4ea2bcb40'
-
 - script: |
     pip install databricks-cli
   displayName: 'install databricks cli'
@@ -25,7 +20,7 @@ steps:
     https://adb-491463922244483.3.azuredatabricks.net
     dapi44a25ba7d3fe208c0168f6d4ea2bcb40
     EOF
-  displayName: 'configure token'
+  displayName: 'configure token for primary workspace'
 
 - script: |
     wget https://github.com/databricks/terraform-provider-databricks/releases/download/v1.31.0/terraform-provider-databricks_1.31.0_linux_amd64.zip
@@ -33,7 +28,18 @@ steps:
   displayName: 'Get the terraform exporter code'
 
 - script: |
-    pwd
-    ls
     ./terraform-provider-databricks_v1.31.0 exporter -directory output -skip-interactive
   displayName: 'run the terraform exporter'
+
+- script: |
+    databricks configure --token <<EOF
+    https://adb-387883605664296.16.azuredatabricks.net/
+    dapia5d70b9b3942e78a77200794b7074fda
+    EOF
+  displayName: 'configure token for secondary workspace'
+
+- script: |
+    cd output
+    terraform init
+    ./import.sh
+  displayName: 'import into secondary workspace'
